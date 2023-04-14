@@ -9,16 +9,13 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `ggoh.dev`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `오경근`,
+      summary: `잡다하게 글을 씁니다.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
-    social: {
-      twitter: `kylemathews`,
-    },
+    description: `개발 블로그`,
+    siteUrl: `https://ggoh.dev/`,
   },
   plugins: [
     `gatsby-plugin-postcss`,
@@ -86,11 +83,18 @@ module.exports = {
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.nodes.map(node => {
+                const url = new URL(
+                  `posts/${node.fields?.slug}`,
+                  site.siteMetadata.siteUrl
+                ).toString()
+
+                console.log(url)
+
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + node.fields.slug,
+                  url,
+                  guid: url,
                   custom_elements: [{ "content:encoded": node.html }],
                 })
               })
@@ -111,7 +115,7 @@ module.exports = {
               }
             }`,
             output: "/rss.xml",
-            title: "Gatsby Starter Blog RSS Feed",
+            title: "ggoh.dev RSS Feed",
           },
         ],
       },
@@ -119,8 +123,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `Gatsby`,
+        name: `ggoh.dev`,
+        short_name: `ggoh.dev`,
         start_url: `/`,
         background_color: `#ffffff`,
         // This will impact how browsers show your PWA/website

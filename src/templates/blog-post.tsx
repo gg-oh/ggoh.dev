@@ -1,7 +1,6 @@
 import * as React from "react"
 import { Link, PageProps, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
@@ -88,35 +87,44 @@ const BlogPostTemplate = ({
           itemProp="articleBody"
         />
         <hr />
-        <footer>
-          <Bio />
-        </footer>
+        <footer>&nbsp;</footer>
       </article>
       <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
+        <section className="flex justify-between">
+          {previous && (
+            <Link to={previous.fields.slug} className="min-w-[33%]" rel="prev">
+              <div className="rounded overflow-hidden shadow-md ring-1 ring-black/5">
+                <div className="px-4 py-2">
+                  <div className="mb-2">
+                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
+                      이전 게시글
+                    </span>
+                  </div>
+                  <p className="text-gray-700 font-bold text-base">
+                    {previous.frontmatter.title}
+                  </p>
+                </div>
+              </div>
+            </Link>
+          )}
+          <div className="flex-none">&nbsp;</div>
+          {next && (
+            <Link to={next.fields.slug} className="min-w-[33%]" rel="next">
+              <div className="rounded overflow-hidden shadow-md ring-1 ring-black/5">
+                <div className="px-4 py-2">
+                  <div className="mb-2">
+                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
+                      다음 게시글
+                    </span>
+                  </div>
+                  <p className="text-gray-700 font-bold text-base">
+                    {next.frontmatter.title}
+                  </p>
+                </div>
+              </div>
+            </Link>
+          )}
+        </section>
       </nav>
     </Layout>
   )
