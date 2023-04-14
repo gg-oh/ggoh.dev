@@ -1,7 +1,13 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { Link, PageProps } from "gatsby"
 
-const Layout = ({ location, title, children }) => {
+type LayoutProps = {
+  location: PageProps["location"]
+  title?: string
+  children?: PageProps["children"] | any
+}
+
+const Layout = ({ location, title, children }: LayoutProps) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
   let header

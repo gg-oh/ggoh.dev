@@ -6,9 +6,15 @@
  */
 
 import * as React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, SliceComponentProps } from "gatsby"
 
-const Seo = ({ description, title, children }) => {
+type SeoProps = {
+  description?: string
+  title?: string
+  children?: undefined
+}
+
+const Seo = ({ description, title, children }: SeoProps) => {
   const { site } = useStaticQuery(
     graphql`
       query {

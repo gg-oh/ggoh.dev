@@ -1,14 +1,75 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
+import { Link, PageProps, graphql } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
+type DataProps = {
+  site: {
+    siteMetadata: {
+      title: string
+    }
+  }
+  markdownRemark: {
+    id: string
+    excerpt: string
+    html: string
+    frontmatter: {
+      title: string
+      date: string
+    }
+    post: {
+      fields: {
+        slug: string
+      }
+      frontmatter: {
+        title: string
+      }
+    }
+  }
+  previous: {
+    fields: {
+      slug: string
+    }
+    frontmatter: {
+      title: string
+    }
+  }
+  next: {
+    fields: {
+      slug: string
+    }
+    frontmatter: {
+      title: string
+    }
+  }
+}
+
+type HeadProps = {
+  data: {
+    markdownRemark: {
+      frontmatter: {
+        title: string
+        description: string
+      }
+      excerpt: string
+      post: {
+        fields: {
+          slug: string
+        }
+        frontmatter: {
+          title: string
+        }
+      }
+    }
+  }
+}
+
 const BlogPostTemplate = ({
   data: { previous, next, site, markdownRemark: post },
   location,
-}) => {
+}: PageProps<DataProps>) => {
   const siteTitle = site.siteMetadata?.title || `Title`
 
   return (
@@ -61,7 +122,7 @@ const BlogPostTemplate = ({
   )
 }
 
-export const Head = ({ data: { markdownRemark: post } }) => {
+export const Head = ({ data: { markdownRemark: post } }: HeadProps) => {
   return (
     <Seo
       title={post.frontmatter.title}
