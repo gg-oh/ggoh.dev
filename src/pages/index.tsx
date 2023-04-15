@@ -21,6 +21,7 @@ type DataProps = {
         title: string
         description: string
         category: string
+        tags: string[]
       }
     }[]
   }
@@ -46,9 +47,9 @@ const BlogIndex = ({ data, location }: PageProps<DataProps>) => {
 
           return (
             <li key={post.fields.slug} className="mb-0">
-              <div className="mt-8 space-y-16 border-t border-gray-200 pt-10">
+              <div className="mt-5 space-y-16 border-t border-gray-200 pt-5">
                 <article
-                  className="flex max-w-xl flex-col items-start justify-between"
+                  className="flex flex-col items-start justify-between py-5 px-6 rounded-xl overflow-hidden shadow-md ring-1 ring-black/5"
                   itemScope
                   itemType="http://schema.org/Article"
                 >
@@ -59,36 +60,34 @@ const BlogIndex = ({ data, location }: PageProps<DataProps>) => {
                     {post.frontmatter.category && (
                       <a
                         href="#"
-                        className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
+                        className="relative z-10 rounded-full ring-1 ring-indigo-500 px-3 py-1 font-medium text-indigo-500"
                       >
                         {post.frontmatter.category}
                       </a>
                     )}
                   </div>
                   <div className="group relative">
-                    <h3 className="mt-3 text-2xl font-semibold leading-6 text-violet-700 group-hover:text-violet-500">
+                    <h3 className="mt-3 text-2xl font-semibold leading-6 text-gray-700 group-hover:text-gray-500">
                       <Link to={post.fields.slug} itemProp="url">
                         <span className="absolute inset-0"></span>
                         {title}
                       </Link>
                     </h3>
                     <p
-                      className="mt-5 mb-5 line-clamp-3 text-sm leading-6 text-gray-700"
+                      className="mt-5 mb-5 line-clamp-3 text-sm leading-6 text-gray-500"
                       dangerouslySetInnerHTML={{
                         __html: post.frontmatter.description || post.excerpt,
                       }}
                       itemProp="description"
                     ></p>
-                    <div>
-                      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
-                        #photography
-                      </span>
-                      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
-                        #travel
-                      </span>
-                      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
-                        #winter
-                      </span>
+                    <div className="tags">
+                      {post.frontmatter.tags
+                        ? post.frontmatter.tags.map(tag => (
+                            <span className="tag-cloud inline-block shadow-md rounded-lg px-2 py-1 text-xs text-gray-700 mr-2">
+                              {tag}
+                            </span>
+                          ))
+                        : null}
                     </div>
                   </div>
                 </article>
@@ -124,9 +123,11 @@ export const pageQuery = graphql`
           slug
         }
         frontmatter {
-          date(formatString: "MMMM DD, YYYY", locale: "ko-KR")
+          date(formatString: "YY.MM.DD", locale: "ko-KR")
           title
           description
+          category
+          tags
         }
       }
     }

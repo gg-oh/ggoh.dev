@@ -1,0 +1,16 @@
+div.tags {
+  display: block;
+  float: left;
+}
+
+div.tags .tag-cloud:before {
+  color: rgb(99 102 241 / 1);
+  content: "#";
+  font-weight: 700;
+  margin-right: 3px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.tag-cloud {
+}

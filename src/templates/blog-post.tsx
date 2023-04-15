@@ -113,7 +113,7 @@ const BlogPostTemplate = ({
               <div className="rounded overflow-hidden shadow-md ring-1 ring-black/5">
                 <div className="px-4 py-2">
                   <div className="mb-2">
-                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
+                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2 ">
                       다음 게시글
                     </span>
                   </div>
@@ -158,7 +158,7 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "YY.MM.DD", locale: "ko-KR")
         description
       }
     }
