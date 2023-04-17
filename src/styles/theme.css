@@ -14,3 +14,7 @@ div.tags .tag-cloud:before {
 
 .tag-cloud {
 }
+
+article.blog-post:hover h3.post-title {
+  text-decoration: underline;
+}

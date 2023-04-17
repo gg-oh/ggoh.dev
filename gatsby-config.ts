@@ -15,7 +15,7 @@ module.exports = {
       summary: `잡다하게 글을 씁니다.`,
     },
     description: `개발 블로그`,
-    siteUrl: `https://ggoh.dev/`,
+    siteUrl: `https://ggoh.dev`,
   },
   plugins: [
     `gatsby-plugin-postcss`,
@@ -83,18 +83,13 @@ module.exports = {
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.nodes.map(node => {
-                const url = new URL(
-                  `posts/${node.fields?.slug}`,
-                  site.siteMetadata.siteUrl
-                ).toString()
-
-                console.log(url)
-
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,
-                  url,
-                  guid: url,
+                  url: encodeURI(
+                    site.siteMetadata.siteUrl + `/posts` + node.fields.slug
+                  ),
+                  guid: site.siteMetadata.siteUrl + `/posts` + node.fields.slug,
                   custom_elements: [{ "content:encoded": node.html }],
                 })
               })
@@ -116,6 +111,7 @@ module.exports = {
             }`,
             output: "/rss.xml",
             title: "ggoh.dev RSS Feed",
+            match: `/posts/`,
           },
         ],
       },
@@ -131,7 +127,7 @@ module.exports = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
   ],
