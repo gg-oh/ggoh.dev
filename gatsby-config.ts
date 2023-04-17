@@ -14,7 +14,7 @@ module.exports = {
       name: `오경근`,
       summary: `잡다하게 글을 씁니다.`,
     },
-    description: `개발 블로그`,
+    description: `오경근 개발 블로그 입니다.`,
     siteUrl: `https://ggoh.dev`,
   },
   plugins: [
@@ -128,6 +128,17 @@ module.exports = {
         // theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/favicon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          "G-GZNE79NWD4", // Google Analytics / GA
+        ],
+        pluginConfig: {
+          head: true,
+        },
       },
     },
   ],
