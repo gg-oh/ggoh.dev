@@ -127,8 +127,6 @@ export const pageQuery = graphql`
           date(formatString: "YY.MM.DD", locale: "ko-KR")
           title
           description
-          category
-          tags
         }
       }
     }

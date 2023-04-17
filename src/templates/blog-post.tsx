@@ -87,45 +87,7 @@ const BlogPostTemplate = ({
           itemProp="articleBody"
         />
         <hr />
-        <footer>&nbsp;</footer>
       </article>
-      <nav className="blog-post-nav">
-        <section className="flex justify-between">
-          {previous && (
-            <Link to={previous.fields.slug} className="min-w-[33%]" rel="prev">
-              <div className="rounded overflow-hidden shadow-md ring-1 ring-black/5">
-                <div className="px-4 py-2">
-                  <div className="mb-2">
-                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
-                      이전 게시글
-                    </span>
-                  </div>
-                  <p className="text-gray-700 font-bold text-base">
-                    {previous.frontmatter.title}
-                  </p>
-                </div>
-              </div>
-            </Link>
-          )}
-          <div className="flex-none">&nbsp;</div>
-          {next && (
-            <Link to={next.fields.slug} className="min-w-[33%]" rel="next">
-              <div className="rounded overflow-hidden shadow-md ring-1 ring-black/5">
-                <div className="px-4 py-2">
-                  <div className="mb-2">
-                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2 ">
-                      다음 게시글
-                    </span>
-                  </div>
-                  <p className="text-gray-700 font-bold text-base">
-                    {next.frontmatter.title}
-                  </p>
-                </div>
-              </div>
-            </Link>
-          )}
-        </section>
-      </nav>
     </Layout>
   )
 }
