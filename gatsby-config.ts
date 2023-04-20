@@ -141,5 +141,14 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: `https://ggoh.dev`,
+        sitemap: `https://ggoh.dev/sitemap-index.xml`,
+        policy: [{ userAgent: `*`, allow: `/` }],
+      },
+    },
+    `gatsby-plugin-sitemap`,
   ],
 }
