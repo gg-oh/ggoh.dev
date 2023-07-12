@@ -1,99 +1,162 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
 <h1 align="center">
-  Gatsby's blog starter
+    gatsby-starter-hoodie
 </h1>
 
-Kick off your project with this blog boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+<h4 align="center">
+  A gatsby starter developed for developers to build tech blogs.
+</h4>
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
+![](mockup.png)
 
-## 🚀 Quick start
+> gatsby-starter-hoodie has been migrated to **Gatsby 5** as of 2023-06-30. gatsby-starter-hoodie is now available for **node.js 20**.
 
-1.  **Create a Gatsby site.**
+## 🚀 About gatsby-starter-hoodie
 
-    Use the Gatsby CLI ([install instructions](https://www.gatsbyjs.com/docs/tutorial/part-0/#gatsby-cli)) to create a new site, specifying the blog starter.
+[한국어 문서 바로가기](https://github.com/devHudi/gatsby-starter-hoodie/blob/develop/README-kr.md)
 
-    ```shell
-    # create a new Gatsby site using the blog starter
-    gatsby new my-blog-starter https://github.com/gatsbyjs/gatsby-starter-blog
-    ```
+gatsby-starter-hoodie is a gatsby starter created for writing tech blogs. Markdown, Code Highlighting in various programming languages, and Katex syntax are supported. Also, you can easily categorize articles into tags and series.
 
-1.  **Start developing.**
+Start your blog with a neatly designed gatsby-starter-hoodie that supports dark mode.
 
-    Navigate into your new site’s directory and start it up.
+This project inspired by [velog](https://velog.io).
 
-    ```shell
-    cd my-blog-starter/
-    gatsby develop
-    ```
+## [Live Demo](https://hoodie.gatsbyjs.io)
 
-1.  **Open the source code and start editing!**
+## Features
 
-    Your site is now running at `http://localhost:8000`!
+- Markdown
+- Code Highlighting
+- Katex Syntax
+- Dark Mode (Responsive to the settings of the OS)
+- Tag Categoriazation
+- Series Categorization
+- Responsive Web
+- SEO
+- Utterance (Comment widget)
 
-    Note: You'll also see a second link: `http://localhost:8000/___graphql`. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby Tutorial](https://www.gatsbyjs.com/docs/tutorial/part-4/#use-graphiql-to-explore-the-data-layer-and-write-graphql-queries).
+Getting started your blog with gatsby-starter-hoodie by following steps below. It's very easy 😉.
 
-    Open the `my-blog-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+## 1. Create a Gatsby site
 
-## 🚀 Quick start (Netlify)
+> Make sure you have **node.js** and **gatsby-cli** installed on your computer.
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
+```
+$ npx gatsby new my-hoodie-blog https://github.com/devHudi/gatsby-starter-hoodie
+```
 
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-blog)
+## 2. Start dev server
 
-## 🧐 What's inside?
+```
+$ cd my-hoodie-blog
+$ npm run start
+```
 
-A quick look at the top-level files and directories you'll see in a typical Gatsby project.
+Now you can access to your blog at localhost:8000.
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package.json
-    └── README.md
+## 3. Create your own Github repository
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+Utterance comment widget is based on **Github issue system**. So you need your own GitHub repository. Also, if you want to publish your blog through Github Pages or Netlify, the Github Repository is a necessary.
 
-1.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+If you don't know how to create a GitHub repository, follow the [official GitHub documentation](https://docs.github.com/en/github/getting-started-with-github/create-a-repo).
 
-1.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+### Add remote repository
 
-1.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+```
+git remote add origin https://github.com/{YOUR_GITHUB_NAME}/{YOUR_REPOSITORY_NAME}
+```
 
-1.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/) for more detail).
+## 4. Write blog-config.js
 
-1.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+```javascript
+module.exports = {
+  title: "MY BLOG",
+  description: "Hello, This is my blog",
+  author: "YOUR NAME",
+  siteUrl: "https://myblog.com",
+  links: {
+    github: "https://github.com",
+    facebook: "https://www.facebook.com",
+    instagram: "https://www.instagram.com",
+    etc: "https://www.google.com/",
+  },
+  utterances: {
+    repo: "{YOUR_GITHUB_NAME}/{YOUR_REPOSITORY_NAME}",
+    type: "pathname",
+  },
+}
+```
 
-1.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+gatsby-starter-hoodie provides a configuration file called `blog-config.js`. In this file, you can configure blog, biography (profile), and utterance.
 
-1.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
+Configure `blog-config.js` to suit your blog. However, it is recommended not to modify `utterances.type`.
 
-1.  **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+## 5. Add your content
 
-1.  **`README.md`**: A text file containing useful reference information about your project.
+Markdown content is in `contents/posts`. You can write and add your articles. [Click here](https://hoodie.gatsbyjs.io/gatsby-starter-hoodie/writing-guide) to see the detail writing guide.
 
-## 🎓 Learning Gatsby
+## 6. Deploy your blog
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
+### 6-1 via Netlify
 
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
+<a href="https://app.netlify.com/start/deploy?repository=https://github.com/alxshelepenok/gatsby-starter-lumen" target="_blank"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
 
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
+Follow the Connecting to Netlify steps in [A Step-by-Step Guide: Gatsby on Netlify](https://www.netlify.com/blog/2016/02/24/a-step-by-step-guide-gatsby-on-netlify/). It's not difficult.
 
-## 💫 Deploy
+If you connect the github repository using Netlify, it is automatically distributed whenever you push it, so it is convenient.
 
-[Build, Deploy, and Host On Netlify](https://netlify.com)
+### 6-2. via Github Pages
 
-The fastest way to combine your favorite tools and APIs to build the fastest sites, stores, and apps for the web. And also the best place to build, deploy, and host your Gatsby sites.
+#### Case 1
 
-<!-- AUTO-GENERATED-CONTENT:END -->
+If the repository name is in the form of `{YOUR_GITHUB_NAME} .github.io`, run it below.
+
+```
+$ npm run deploy-gh
+```
+
+#### Case 2
+
+If the repository name is not in the form of `{YOUR_GITHUB_NAME} .github.io`, run it below.
+
+```
+$ npm run deploy-gh-prefix-paths
+```
+
+In the above case, you need to change `pathPrefix` in `gatsby-config.js` to your repository name.
+
+### 6-3. other platforms
+
+```
+$ npm run build
+```
+
+You can build the gatsby website with the command above. The build output is created in the `/public` directory. Deploy the `/public` directory using the command for the platform you want to deploy.
+
+## 7. Cutomize
+
+### Project Structure
+
+You can customize your own gatsby-starter-hoodie by referring to the following file structure 🙊.
+
+```
+├── node_modules
+├── contents
+│   └── posts // your articles are here
+├── public // build outputs are here
+└── src
+    ├── assets
+    │   └── theme // theme config is here
+    ├── components
+    │   └── Article
+    │       └── Body
+    │           └── StyledMarkdown
+    │               └── index.jsx // markdown styles are here
+    │   ...
+    ├── fonts // webfonts are here
+    ├── hooks
+    ├── images
+    ├── pages // page components are here
+    ├── reducers
+    ├── templates // post components are here
+    └── utils
+```
