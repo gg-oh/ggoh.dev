@@ -14,4 +14,5 @@ module.exports = {
     repo: "gg-oh/ggoh.dev",
     type: "pathname",
   },
+  gtag: "G-GZNE79NWD4",
 }
